@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color:#FFF5E0;
+    color: #090808;
+}
+a {
+    color: #080808;
+    text-decoration: none;
+}
+
+/* Header styles */
+header {
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: serif;
+    font-size: 1.2rem;
+    color: #111;
+}
+.logo-text {
+    font-family: serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1.5rem;
+}
+nav a {
+    font-size: 0.9rem;
+}
+nav a:hover {
+    color: #736e6e;
+}
+.cart {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #080808;
+}
+
+/* Hero section styles */
+.hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    gap: 20px;
+}
+.hero-content {
+    position: relative;
+    z-index: 20;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+.hero h1 {
+    font-family: serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+.hero h2 {
+    font-family: serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    color: #131212;
+    margin-bottom: 2rem;
+    max-width: 400px;
+}
+.btn {
+    display: inline-block;
+    padding: 0.75rem 0.75rem;
+    background-color: black;
+    border: 1px solid #333;
+    color: #c4b3b3;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* margin-left: 2rem; */
+    width: 150px;
+}
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Slider styles */
+.slider {
+    position: relative;
+    width: 50%;
+    height: 70%;
+    overflow: hidden;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+.slider-container {
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.slide {
+    width: 20%;
+    height: 100%;
+    position: relative;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.slide-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.slider-nav {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+.slider-nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+.slider-nav-dot.active {
+    background-color: #fff;
+}
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+}
+.slider-arrow-left {
+    left: 1rem;
+}
+.slider-arrow-right {
+    right: 1rem;
+}
+
+/* Product categories styles */
+.product-categories {
+    padding: 4rem 0;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.category-item {
+    background-color: #111;
+    padding: 2rem;
+    text-align: center;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.category-item h3 {
+    font-family: serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive styles */
+@media ((max-width: 768px) and (min-width:0) ) {
+    nav {
+        display: none;
+    }
+    .hero {
+        flex-direction: column;
+        height: auto;
+    }
+    .hero-content, .slider {
+        width: 100%;
+        margin-right: 20px !important
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    .slider{
+        width: 370;
+        height: 350px;
+
+    }
+}

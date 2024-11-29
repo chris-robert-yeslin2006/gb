@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Loader Example</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    /* Loader Styles */
+    .loader {
+      display: block;
+      --height-of-loader: 4px;
+      --loader-color: #0071e2;
+      width: 130px;
+      height: var(--height-of-loader);
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .loader::before {
+      content: "";
+      position: absolute;
+      background: var(--loader-color);
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      border-radius: 30px;
+      animation: moving 1s ease-in-out infinite;
+    }
+
+    @keyframes moving {
+      50% {
+        width: 100%;
+      }
+
+      100% {
+        width: 0;
+        right: 0;
+        left: unset;
+      }
+    }
+
+    /* Content Styles */
+    #content {
+      display: none;
+      text-align: center;
+    }
+
+    #content h1 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader"></div>
+
+  <!-- Main Content -->
+  <div id="content">
+    <h1>Welcome to the Page!</h1>
+    <p>The main content is now visible.</p>
+  </div>
+
+  <script>
+    // Timer to hide loader and show content after 3 seconds
+    setTimeout(function () {
+      document.querySelector('.loader').style.display = 'none'; // Hide the loader
+      document.getElementById('content').style.display = 'block'; // Show the content
+    }, 3000);
+  </script>
+</body>
+</html>

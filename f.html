@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GB stores</title>
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="f.css">
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-circle">GB</div>
+                    <span class="logo-text">stores</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <!-- <li><a href="#">About Us</a></li> -->
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div href="cart.html" class="cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <a href="cart.html">Cart</a>
+                </div>
+            
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Fashion & Gadgets</h1>
+            <h2>Love Collection</h2>
+            <p>Exclusive diamond rings for couples and lovers.</p>
+            <a href="prv.html" class="btn">Shop Now</a>
+        </div>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="https://via.placeholder.com/600x600" alt="Forest">
+                    <div class="slide-content">
+                        <h3>Forest</h3>
+                        <p>"And into the forest I go, to lose my mind and find my soul"</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/600x600" alt="Lake">
+                    <div class="slide-content">
+                        <h3>Lake</h3>
+                        <p>"Mist to mist, drops to drops. For water thou art, and unto water shalt thou return"</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/600x600" alt="Cliffs">
+                    <div class="slide-content">
+                        <h3>Cliffs</h3>
+                        <p>"Go to the edge of the cliff and jump off. Build your wings on the way down"</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/600x600" alt="Mountains">
+                    <div class="slide-content">
+                        <h3>Mountains</h3>
+                        <p>"What are men to rocks and mountains?"</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://via.placeholder.com/600x600" alt="Peaks">
+                    <div class="slide-content">
+                        <h3>Peaks</h3>
+                        <p>"On all the peaks lies peace"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav"></div>
+            <div class="slider-arrow slider-arrow-left">&lt;</div>
+            <div class="slider-arrow slider-arrow-right">&gt;</div>
+        </div>
+    </section>
+
+    <section class="product-categories">
+        <div class="container">
+            <div class="category-grid">
+                <div class="category-item">
+                    <h3>Necklace with Diamond Pendant</h3>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+                <div class="category-item">
+                    <h3>Diamond Engagement Rings</h3>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr style="color: white; ">
+    <footer>
+    
+        <a href="https://chat.whatsapp.com/your-group-link" target="_blank" class="uiverse">
+          <span class="tooltip">Join WhatsApp Group</span>
+          WhatsApp Group
+        </a>
+    </footer>
+
+    
+
+    <script>
+        // Slider functionality
+        const sliderContainer = document.querySelector('.slider-container');
+        const slides = document.querySelectorAll('.slide');
+        const sliderNav = document.querySelector('.slider-nav');
+        const leftArrow = document.querySelector('.slider-arrow-left');
+        const rightArrow = document.querySelector('.slider-arrow-right');
+        let currentIndex = 0;
+
+        // Create nav dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-nav-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            sliderNav.appendChild(dot);
+        });
+
+        function updateSlider() {
+            sliderContainer.style.transform = `translateX(-${currentIndex * 20}%)`;
+            document.querySelectorAll('.slider-nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        leftArrow.addEventListener('click', prevSlide);
+        rightArrow.addEventListener('click', nextSlide);
+
+        // Auto-slide
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
