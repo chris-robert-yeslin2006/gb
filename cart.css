@@ -1,0 +1,145 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f5f5f5;
+}
+header {
+    background-color: #333;
+    padding: 1rem 0;
+    color: #fff;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.cart-item {
+    display: grid;
+    /* justify-content: space-between; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.cart-item h3 {
+    margin: 0;
+}
+.cart-item p {
+    margin: 0;
+}
+.cart-item button {
+    padding: 5px 5px;
+    margin: 0 5px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    height: 30px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cart-item button:hover {
+    background: #0056b3;
+}
+.cart-item .remove-btn {
+    background: #d9534f;
+}
+.cart-item .remove-btn:hover {
+    background: #c9302c;
+}
+#emptyMessage {
+    text-align: center;
+    color: #777;
+}
+.export-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.export-btn:hover {
+    background: #218838;
+}
+/* Mobile view (max-width: 767px) */
+@media screen and (max-width: 767px) {
+.cart-item {
+display: flex;
+flex-direction: row; /* Align elements horizontally */
+align-items: center;
+justify-content: space-between;
+padding: 10px;
+gap: 10px;
+}
+.cart-item img {
+width: 50px; /* Smaller image for mobile */
+height: 50px;
+object-fit: cover;
+border-radius: 5px;
+}
+.cart-item h3 {
+margin: 0;
+font-size: 11px; /* Adjusted for mobile */
+}
+.cart-item p {
+margin: 0;
+font-size: 10px; /* Compact text */
+}
+.cart-item .details {
+flex-grow: 1; /* Allows text to take available space */
+margin-left: 10px;
+}
+.cart-item .button-group {
+display: flex;
+flex-wrap: nowrap; /* Prevent wrapping */
+gap: 5px;
+}
+.cart-item button {
+padding: 3px 8px; /* Smaller buttons */
+font-size: 12px;
+}
+.cart-item .remove-btn {
+background: #d9534f;
+font-size: 12px;
+padding: 3px 8px;
+}
+.cart-item .remove-btn:hover {
+background: #c9302c;
+}
+.export-btn {
+width: 100%; /* Full-width button for mobile */
+font-size: 14px;
+padding: 10px;
+}
+}
+

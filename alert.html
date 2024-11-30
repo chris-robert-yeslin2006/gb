@@ -4,65 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Alert Box</title>
-  <style>
-    /* Styles for the overlay */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      display: none; /* Hidden by default */
-    }
-
-    /* Styles for the alert box */
-    .alert-box {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      width: 300px;
-      padding: 20px;
-      position: relative;
-      text-align: center;
-    }
-
-    /* Exit icon styles */
-    .alert-box .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 18px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    /* OK button styles */
-    .alert-box .ok-btn {
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 15px;
-    }
-
-    .alert-box .ok-btn:hover {
-      background-color: #0056b3;
-    }
-
-    /* Prevent scrolling while overlay is active */
-    body.no-scroll {
-      overflow: hidden;
-    }
-  </style>
+  
 </head>
 <body>
 
@@ -75,30 +17,6 @@
     </div>
   </div>
 
-  <script>
-    // Get references to the elements
-    const overlay = document.getElementById('alertOverlay');
-    const closeAlertBtn = document.getElementById('closeAlert');
-    const okAlertBtn = document.getElementById('okAlert');
-
-    // Function to show the alert
-    const showAlert = () => {
-      overlay.style.display = 'flex'; // Show the overlay
-      document.body.classList.add('no-scroll'); // Disable scrolling
-    };
-
-    // Function to hide the alert
-    const hideAlert = () => {
-      overlay.style.display = 'none'; // Hide the overlay
-      document.body.classList.remove('no-scroll'); // Enable scrolling
-    };
-
-    // Show the alert automatically when the page loads
-    window.addEventListener('load', showAlert);
-
-    // Event listeners for the close and OK buttons
-    closeAlertBtn.addEventListener('click', hideAlert);
-    okAlertBtn.addEventListener('click', hideAlert);
-  </script>
+  
 </body>
 </html>
