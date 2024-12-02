@@ -37,9 +37,9 @@
             
         </div>
     </header>
-    <div class="container">
-        <h1>Our Fashion</h1>
-        <div id="productGrid" class="product-grid"></div>
+    <div style="margin-top: 10px;" class="container">
+        <h1 style="margin: bottom 10px;margin-top: 10px ;">Our Fashion</h1>
+        <div style="margin-top: 10px;" id="productGrid" class="product-grid"></div>
     </div>
 
     <script>
@@ -58,7 +58,7 @@
             productDiv.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
-                <p>${product.price}</p>
+                <p>₹${product.price}</p>
                 <button onclick="addToCart(${product.id})">Add to Cart</button>
             `;
             productGrid.appendChild(productDiv);

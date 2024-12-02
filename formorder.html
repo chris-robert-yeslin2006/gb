@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+</head>
+<style>
+    /* From Uiverse.io by ammarsaa */ 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+    background-color:#FFF5E0;
+    /* background-color: #1a1a1a; */
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #0c0d0d;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #FFF5E0;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline #FFF5E0;
+}
+
+.signin a {
+  color:#FFF5E0;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #FFF5E0;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #dbb45f;
+}
+
+.submit:hover {
+  background-color:#dbb45f;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+</style>
+<body>
+    <form id="form" class="form">
+        <p class="title">Place Order</p>
+        <p class="message" id="message" style="display: none;"></p>
+        <div class="flex">
+            <label>
+                <input class="input" type="text" placeholder="" name="Name" required>
+                <span>Firstname</span>
+            </label>
+        </div>  
+        <label>
+            <input class="input" type="email" placeholder="" name="Email" required>
+            <span>Email</span>
+        </label> 
+        <label>
+            <input class="input" type="text" placeholder="" name="Phone Number" required>
+            <span>Phone Number</span>
+        </label>
+        <label>
+            <input class="input" type="text" placeholder="" name="Products" required>
+            <span>Products</span>
+        </label>
+        <button class="submit" type="submit" id="submit-button">Confirm Order</button>
+    
+        </form>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = "Submitting..";
+            messageElement.style.display = "block";
+            messageElement.style.color = "gold";
+            document.getElementById("submit-button").disabled = true;
+
+            // Collect the form data
+            const formData = new FormData(this);
+            const keyValuePairs = [];
+            for (const pair of formData.entries()) {
+                keyValuePairs.push(pair[0] + "=" + encodeURIComponent(pair[1]));
+            }
+            const formDataString = keyValuePairs.join("&");
+
+            // Send a POST request to your Google Apps Script
+            fetch(
+                "https://script.google.com/macros/s/AKfycbz-USh4gFz_ShCIvz9ghUdKEPOf99S_bcZG1eE-4IYHgbuLyDSMIZm5X8U63HPitAVB3g/exec",
+                {
+                    method: "POST",
+                    body: formDataString,
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                }
+            )
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json(); // Assuming the script returns JSON
+                } else {
+                    throw new Error("Failed to submit the form.");
+                }
+            })
+            .then(function () {
+                messageElement.textContent = "Order placed successfully!";
+                messageElement.style.color = "gold";
+                document.getElementById("form").reset();
+                document.getElementById("submit-button").disabled = false;
+
+                setTimeout(() => {
+                    messageElement.style.display = "none";
+                }, 2600);
+            })
+            .catch(function (error) {
+                console.error(error);
+                messageElement.textContent = "An error occurred while placing the order.";
+                messageElement.style.color = "red";
+                document.getElementById("submit-button").disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>

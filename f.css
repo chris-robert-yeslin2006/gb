@@ -62,6 +62,7 @@ a {
 header {
     border-bottom: 1px solid #333;
     padding: 1rem 0;
+    width: 99vw;
 }
 .container {
     max-width: 1200px;
@@ -285,8 +286,19 @@ nav a:hover {
         font-size: 1.5rem;
     }
     .slider{
-        width: 370;
+        width: 330px;
         height: 350px;
+        margin-right: 50px;
 
     }
+    .con{
+        /* grid-template-rows: repeat(4,1fr); */
+        flex-direction: column;
+    }
+}
+
+
+.con{
+    display: flex;
+    /* grid-template-columns: repeat(4,1fr); */
 }

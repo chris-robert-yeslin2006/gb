@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FFF5E0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header .close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+    background-color:#FFF5E0;
+    /* background-color: #1a1a1a; */
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #0c0d0d;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #FFF5E0;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline #FFF5E0;
+}
+
+.signin a {
+  color:#FFF5E0;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #FFF5E0;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #dbb45f;
+}
+
+.submit:hover {
+  background-color:#dbb45f;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Cart</h1>
+        <div id="cartItems"></div>
+        <p id="emptyMessage" style="display: none;">Your cart is empty.</p>
+        <button class="export-btn" id="placeOrderBtn">Place Order</button>
+    </div>
+
+    <!-- Modal and Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="orderFormModal">
+        <div class="modal-header">
+            <h2>Place Order</h2>
+            <button class="close" id="closeModal">&times;</button>
+        </div>
+        <form id="form" class="form">
+            <label>
+                <input class="input" type="text" placeholder="" name="Firstname" required>
+                <span>Firstname</span>
+            </label>
+            <label>
+                <input class="input" type="email" placeholder="" name="Email" required>
+                <span>Email</span>
+            </label>
+            <label>
+                <input class="input" type="text" placeholder="" name="Phone Number" required>
+                <span>Phone Number</span>
+            </label>
+            <label>
+                <input class="input" type="text" placeholder="" name="Products" required>
+                <span>Products</span>
+            </label>
+            <button class="submit" type="submit">Confirm Order</button>
+        </form>
+    </div>
+
+    <script>
+        // Get elements
+        const placeOrderBtn = document.getElementById("placeOrderBtn");
+        const modalOverlay = document.getElementById("modalOverlay");
+        const orderFormModal = document.getElementById("orderFormModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // Show modal on button click
+        placeOrderBtn.addEventListener("click", () => {
+            modalOverlay.style.display = "block";
+            orderFormModal.style.display = "block";
+        });
+
+        // Close modal
+        closeModal.addEventListener("click", () => {
+            modalOverlay.style.display = "none";
+            orderFormModal.style.display = "none";
+        });
+
+        // Close modal when clicking outside
+        modalOverlay.addEventListener("click", () => {
+            modalOverlay.style.display = "none";
+            orderFormModal.style.display = "none";
+        });
+    </script>
+</body>
+</html>

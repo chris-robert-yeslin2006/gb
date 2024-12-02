@@ -6,6 +6,7 @@
     <title>Cart</title>
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="alert.css">
+    <link rel="stylesheet" href="formorder.css">
    
 </head>
 <body>
@@ -24,10 +25,68 @@
         <h1>Your Cart</h1>
         <div id="cartItems"></div>
         <p id="emptyMessage" style="display: none;">Your cart is empty.</p>
-        <button class="export-btn" onclick="exportCart()">Export Cart Data</button>
+        
+        <button class="export-btn" id="placeOrderBtn" onclick="exportCart()">Place Order</button>
     </div>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="orderFormModal">
+        <div class="modal-header">
+            <h2>Place Order</h2>
+            <button class="close" id="closeModal">&times;</button>
+        </div>
+        <form id="form" class="form">
+            <p class="title">Place Order</p>
+            <!-- Add the message element here -->
+            <p class="message" id="message" style="display: none;"></p>
+    
+            <label>
+                <input class="input" type="text" placeholder="" name="Name" required>
+                <span>Firstname</span>
+            </label>
+            <label>
+                <input class="input" type="email" placeholder="" name="Email" required>
+                <span>Email</span>
+            </label>
+            <label>
+                <input class="input" type="text" placeholder="" name="Phone" required>
+                <span>Phone Number</span>
+            </label>
+            <label>
+                <input class="input" type="text" placeholder="" name="Products" required>
+                <span>Products</span>
+            </label>
+            <button class="submit" type="submit" id="submit-button">Confirm Order</button>
+        </form>
+    </div>
+    
+    <!-- <form id="form" class="form" style="display: flex;justify-content: center;">
+      <p class="title">Place Order</p>
+      <p class="message" id="message" style="display: none;"></p>
+      <div class="flex">
+          <label>
+              <input class="input" type="text" placeholder="" name="Name" required>
+              <span>Firstname</span>
+          </label>
+      </div>  
+      <label>
+          <input class="input" type="email" placeholder="" name="Email" required>
+          <span>Email</span>
+      </label> 
+      <label>
+          <input class="input" type="text" placeholder="" name="Phone Number" required>
+          <span>Phone Number</span>
+      </label>
+      <label>
+          <input class="input" type="text" placeholder="" name="Products" required>
+          <span>Products</span>
+      </label>
+      <button class="submit" type="submit" id="submit-button">Confirm Order</button>
+  
+      </form> -->
 
     <script src="cart.js"></script>
     <script src="alert.js"></script>
+    <script src="formorder.js"></script>
 </body>
 </html>

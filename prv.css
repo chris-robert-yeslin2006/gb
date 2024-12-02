@@ -43,8 +43,10 @@ header nav a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .product img {
-    width: 100%;
-    height: auto;
+    width: 344px;
+    height: 397px;
+    /* height:1280px;
+     width:1111px; */
     border-bottom: 1px solid #ddd;
     margin-bottom: 15px;
 }
@@ -89,6 +91,7 @@ padding: 10px;
 
 .product img {
 height: 120px; /* Smaller image height */
+width: 130px;
 object-fit: cover; /* Ensure image aspect ratio fits */
 }
 
