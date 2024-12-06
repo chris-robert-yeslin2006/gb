@@ -77,7 +77,8 @@ header nav a {
     text-align: center;
     color: #777;
 }
-.export-btn {
+
+/* .export-btn {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
@@ -90,7 +91,7 @@ header nav a {
 }
 .export-btn:hover {
     background: #218838;
-}
+} */
 /* Mobile view (max-width: 767px) */
 @media screen and (max-width: 767px) {
 .cart-item {

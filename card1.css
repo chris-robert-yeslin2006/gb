@@ -48,14 +48,17 @@ main {
     inset: auto auto 40px 30px;
     color: inherit;
     text-decoration: none;
+    font-weight: 900;
   }
   .card:hover h2 {
     inset: auto auto 220px 30px;
     transition: inset 0.3s ease-out;
   }
   .card:hover p, .card:hover a {
-    opacity: 1;
+    opacity: 12;
     transition: opacity 0.5s 0.1s ease-in;
+    font-size: large;
+    color:rgb(213, 207, 171);
   }
   .card:hover img {
     transition: opacity 0.3s ease-in;

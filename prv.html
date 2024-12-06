@@ -6,9 +6,10 @@
     <title>Products</title>
     <link rel="stylesheet" href="prv.css">
     <link rel="stylesheet" href="f.css">
+    <link rel="stylesheet" href="ex.css">
 </head>
 <body>
-    <header style="background-color:#FFF5E0; ">
+    <header style="background-color:#FFF5E0; margin-bottom: 1rem; ">
         <div class="container" style="display: flex; justify-content: space-around;">
             <div class="header-content" style="display: flex; justify-content: space-around;">
                 <div style="margin-right:20px ;">
@@ -38,16 +39,31 @@
         </div>
     </header>
     <div class="container">
-        <h1>Our Products</h1>
+        <!-- <h1 style="margin: 8px 8px;">Our Products</h1> -->
         <div id="productGrid" class="product-grid"></div>
     </div>
 
     <script>
         const products = [
-            { id: 1, name: " Nike Air Jordan Retro 1 X Avengers", image: "source/shoes/Nike Air Jordan Retro 1 X Avengers.jpg", price: "₹2000" },
-            { id: 2, name: "Nike Air Jordan 1 Retro High OG", image: "source/shoes/Nike Air Jordan 1 Retro High blue (Custom).jpg", price: "$99" },
-            { id: 3, name: "Headphones", image: "https://via.placeholder.com/300", price: "$199" },
-            { id: 4, name: "Camera", image: "https://via.placeholder.com/300", price: "$699" },
+            { id: 1, name: " Nike Air Jordan Retro 1 X Avengers", image: "source/shoes/Nike Air Jordan Retro 1 X Avengers.jpg", price: "2000" },
+            { id: 2, name: "Nike Air Jordan 1 Retro High OG", image: "source/shoes/Nike Air Jordan 1 Retro High blue (Custom).jpg", price: "1599" },
+            { id: 3, name: "Nike jordan 1 short", image: "source/shoes/Nikejordanb.jpg", price: "999" },
+            { id: 4, name: "Nike jordan 2 short", image: "source/shoes/Nikejordanbl.jpg", price: "999" },
+            { id: 5, name: "Puma unisex sneakers", image: "source/shoes/Pumaunisexb.jpg", price: "999" },
+            { id: 6, name: "Puma unisex sneakers", image: "source/shoes/Pumaunisexw.jpg", price: "999" },
+            { id: 7, name: "Adidas samba", image: "source/shoes/ADIDASSAMBA.jpg", price: "2499" },
+            { id: 8, name: "Nike Sb dunk Tree hugger", image: "source/shoes/NikeTree.jpg", price: "2999" },
+            { id: 9, name: "Nike blue s1", image: "source/shoes/Nikeblues1.jpg", price: "499" },
+            { id: 10, name: "PUMA RX-S", image: "source/shoes/PUMARX-S.jpg", price: "599" },
+            { id: 11, name: "IMPORTED 𝗥𝗘𝗧𝗥𝗢1", image: "source/shoes/imported1.jpg", price: "1999" },
+            { id: 12, name: "IMPORTED 𝗥𝗘𝗧𝗥𝗢2", image: "source/shoes/imported2.jpg", price: "1999" },
+            { id: 13, name: "IMPORTED 𝗥𝗘𝗧𝗥𝗢3", image: "source/shoes/imported3.jpg", price: "1999" },
+            { id: 14, name: "SKETCHERS ENHANCE", image: "source/shoes/SKETCHERS ENHANCE.jpg", price: "999" },
+           
+        
+        
+        
+        
         ];
 
         const productGrid = document.getElementById("productGrid");
@@ -58,8 +74,8 @@
             productDiv.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
-                <p>${product.price}</p>
-                <button onclick="addToCart(${product.id})">Add to Cart</button>
+                <p>₹${product.price}</p>
+                <button class="btn-24" onclick="addToCart(${product.id})">Add to Cart</button>
             `;
             productGrid.appendChild(productDiv);
         });

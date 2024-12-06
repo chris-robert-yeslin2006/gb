@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="alert.css">
     <link rel="stylesheet" href="formorder.css">
+    <link rel="stylesheet" href="exportbtn.css">
+    <link rel="stylesheet" href="ex.css">
    
 </head>
 <body>
@@ -14,7 +16,7 @@
     <div class="overlay" id="alertOverlay">
         <div class="alert-box">
           <button class="close-btn" id="closeAlert">&times;</button>
-          <p>Welcome! This is a custom alert message.</p>
+          <p>We were highly support direct contact purchasing <br>Our Customer care will contact after you  place order😊 </p>
           <button class="ok-btn" id="okAlert">OK</button>
         </div>
       </div>
@@ -26,7 +28,14 @@
         <div id="cartItems"></div>
         <p id="emptyMessage" style="display: none;">Your cart is empty.</p>
         
-        <button class="export-btn" id="placeOrderBtn" onclick="exportCart()">Place Order</button>
+        <!-- <button class="export-btn " id="placeOrderBtn" onclick="exportCart()">Place Order</button> -->
+        <button style="display: block;
+        margin: 20px auto;
+        padding: 10px 20px;" class="btn-20 export-btn" id="placeOrderBtn" onclick="exportCart()"><span>Place Order</span></button>
+        <!-- <button style="display: block;
+        margin: 20px auto;
+        padding: 10px 20px;" class="btn-24" id="placeOrderBtn" onclick="exportCart()"><span>Place Order</span></button>
+     -->
     </div>
 
     <div class="modal-overlay" id="modalOverlay"></div>

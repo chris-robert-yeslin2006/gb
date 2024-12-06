@@ -6,8 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color:#FFF5E0;
+    /* background-color:#FFF5E0; */
     color: #090808;
+    overflow-x: hidden;
 }
 .loader {
     display: block;
@@ -167,7 +168,7 @@ nav a:hover {
 /* Slider styles */
 .slider {
     position: relative;
-    width: 50%;
+    width: 50vw;
     height: 70%;
     overflow: hidden;
     margin-top: 100px;
@@ -194,12 +195,14 @@ nav a:hover {
     bottom: 0;
     left: 0;
     width: 100%;
+    color: #f0e3e3;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.5);
 }
 .slide-content h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #e4e2d2;
 }
 .slider-nav {
     position: absolute;
@@ -213,7 +216,7 @@ nav a:hover {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(216, 216, 183, 0.5);
     cursor: pointer;
 }
 .slider-nav-dot.active {
